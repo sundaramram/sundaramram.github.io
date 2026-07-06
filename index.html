@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sundaram Ramachandran — Senior AI Data Engineer</title>
+<meta name="description" content="Sundaram Ramachandran — Senior AI Data Engineer specializing in Azure, Databricks, PySpark, Delta Lake, and Snowflake. Building at the intersection of media, data, and AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg-soft: #0f1420;
+    --card: #131a29;
+    --border: #1f2937;
+    --text: #d7dde8;
+    --muted: #8b95a7;
+    --accent: #22d3ee;
+    --accent2: #34d399;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+  ::selection { background: rgba(34,211,238,.25); }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,14,20,.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: var(--mono); font-weight: 700; color: var(--accent); text-decoration: none; font-size: 1.05rem; }
+  .logo span { color: var(--muted); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .9rem; font-family: var(--mono); transition: color .2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a::before { content: '// '; color: var(--border); }
+
+  /* Hero */
+  header { padding: 110px 0 90px; position: relative; overflow: hidden; }
+  header::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(600px 300px at 80% 10%, rgba(34,211,238,.07), transparent),
+      radial-gradient(500px 300px at 10% 90%, rgba(52,211,153,.05), transparent);
+    pointer-events: none;
+  }
+  .kicker { font-family: var(--mono); color: var(--accent); font-size: .95rem; margin-bottom: 18px; }
+  h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
+  .tagline { font-size: clamp(1.05rem, 2.5vw, 1.3rem); color: var(--muted); margin-top: 18px; max-width: 640px; }
+  .tagline strong { color: var(--text); font-weight: 600; }
+  .hero-ctas { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 12px 22px; border-radius: 8px; text-decoration: none;
+    font-family: var(--mono); font-size: .9rem; font-weight: 500; transition: all .2s;
+  }
+  .btn-primary { background: var(--accent); color: #06222a; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(34,211,238,.25); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Terminal card */
+  .terminal {
+    margin-top: 56px; background: var(--bg-soft); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; font-family: var(--mono); font-size: .85rem;
+  }
+  .term-bar { display: flex; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .term-bar i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .term-bar i:nth-child(1){background:#ef4444}.term-bar i:nth-child(2){background:#f59e0b}.term-bar i:nth-child(3){background:#22c55e}
+  .term-body { padding: 18px 20px; color: var(--muted); }
+  .term-body .p { color: var(--accent2); }
+  .term-body .k { color: var(--accent); }
+  .term-body .v { color: var(--text); }
+
+  /* Sections */
+  section { padding: 80px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: 1.7rem; font-weight: 700; margin-bottom: 40px; letter-spacing: -.01em; }
+  h2::before { content: '# '; color: var(--accent); font-family: var(--mono); }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: start; }
+  .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 1.02rem; }
+  .about-text p strong { color: var(--text); }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .stat b { display: block; font-size: 1.7rem; color: var(--accent); font-family: var(--mono); }
+  .stat span { font-size: .82rem; color: var(--muted); }
+
+  /* Skills */
+  .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 22px; }
+  .skill-card h3 { font-family: var(--mono); font-size: .85rem; color: var(--accent2); margin-bottom: 14px; font-weight: 500; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--mono); font-size: .76rem; padding: 5px 10px; border-radius: 6px;
+    background: rgba(34,211,238,.08); border: 1px solid rgba(34,211,238,.15); color: var(--text);
+  }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+  .project {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 26px;
+    display: flex; flex-direction: column; transition: all .25s; text-decoration: none; color: inherit;
+  }
+  .project:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.4); }
+  .project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .project h3 { font-family: var(--mono); font-size: 1rem; color: var(--accent); font-weight: 500; }
+  .project p { color: var(--muted); font-size: .92rem; flex: 1; }
+  .project .tags { margin-top: 18px; }
+  .folder { color: var(--accent2); }
+  .ext-arrow { color: var(--muted); font-size: .85rem; }
+
+  /* Experience */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
+  .job { position: relative; padding-bottom: 44px; }
+  .job:last-child { padding-bottom: 0; }
+  .job::before {
+    content: ''; position: absolute; left: -28px; top: 7px; width: 14px; height: 14px;
+    border-radius: 50%; background: var(--bg); border: 3px solid var(--accent);
+  }
+  .job-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+  .job h3 { font-size: 1.12rem; font-weight: 600; }
+  .job .co { color: var(--accent); font-family: var(--mono); font-size: .92rem; }
+  .job .dates { color: var(--muted); font-family: var(--mono); font-size: .8rem; margin-left: auto; }
+  .job ul { margin-top: 12px; padding-left: 18px; color: var(--muted); font-size: .93rem; }
+  .job li { margin-bottom: 7px; }
+  .job li::marker { color: var(--accent2); }
+
+  /* Education */
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .edu { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 22px; }
+  .edu h3 { font-size: 1rem; font-weight: 600; }
+  .edu p { color: var(--muted); font-size: .9rem; margin-top: 4px; }
+
+  /* Contact */
+  .contact { text-align: center; }
+  .contact p { color: var(--muted); max-width: 520px; margin: 0 auto 30px; }
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+  footer { border-top: 1px solid var(--border); padding: 28px 0; text-align: center; color: var(--muted); font-family: var(--mono); font-size: .8rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 760px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .job .dates { margin-left: 0; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="logo" href="#">sundaram<span>@portfolio:~$</span></a>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#experience">experience</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="container">
+    <div class="kicker">Hi, my name is</div>
+    <h1>Sundaram Ramachandran.</h1>
+    <p class="tagline">Senior AI Data Engineer with <strong>9+ years</strong> building production-grade data platforms on <strong>Azure, Databricks &amp; Snowflake</strong> — and side projects at the intersection of <strong>media, data, and AI</strong>.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-ghost" href="https://github.com/sidsays182-maker" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+
+    <div class="terminal">
+      <div class="term-bar"><i></i><i></i><i></i></div>
+      <div class="term-body">
+        <div><span class="p">$</span> whoami</div>
+        <div><span class="k">role:</span> <span class="v">Senior AI Data Engineer @ PJM Interconnection</span></div>
+        <div><span class="k">stack:</span> <span class="v">Azure · Databricks · PySpark · Delta Lake · Snowflake · SQL</span></div>
+        <div><span class="k">location:</span> <span class="v">Norristown, PA</span></div>
+        <div><span class="k">building:</span> <span class="v">civic tech · news intelligence · ML</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <h2>About</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I design and deliver scalable data pipelines and analytics-ready datasets across <strong>financial services, real estate technology, and energy</strong>. My day-to-day is lakehouse architecture: automated ELT/ETL, Medallion patterns (Bronze/Silver/Gold), data validation frameworks, CI/CD automation, and performance tuning — owning data platforms end-to-end.</p>
+        <p>Outside of work, I'm an entrepreneur and product builder. I create tools that turn unstructured public information — <strong>news, legislation, social signals</strong> — into something useful, from RAG chatbots over live news corpora to ML models that forecast whether a bill becomes law.</p>
+        <p>Open to collaborations on civic-tech, AI tooling, and media products.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>9+</b><span>years in data engineering</span></div>
+        <div class="stat"><b>10M+</b><span>records processed daily</span></div>
+        <div class="stat"><b>99.5%</b><span>pipeline uptime achieved</span></div>
+        <div class="stat"><b>40%</b><span>query performance gains</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <h2>Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h3>&gt; cloud_and_platforms</h3>
+        <div class="tags"><span class="tag">Azure ADF</span><span class="tag">ADLS Gen2</span><span class="tag">Azure Synapse</span><span class="tag">Azure SQL DB</span><span class="tag">Azure DevOps</span><span class="tag">Azure Monitor</span><span class="tag">Databricks</span><span class="tag">Snowflake</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>&gt; data_engineering</h3>
+        <div class="tags"><span class="tag">PySpark</span><span class="tag">SparkSQL</span><span class="tag">Delta Lake</span><span class="tag">Medallion Architecture</span><span class="tag">ETL/ELT</span><span class="tag">Data Lakehouse</span><span class="tag">Apache Kafka</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>&gt; languages_and_tools</h3>
+        <div class="tags"><span class="tag">SQL (Advanced)</span><span class="tag">Python</span><span class="tag">Scala</span><span class="tag">Shell</span><span class="tag">Git</span><span class="tag">Docker</span><span class="tag">Terraform</span><span class="tag">Airflow</span><span class="tag">Jenkins</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>&gt; ai_and_product</h3>
+        <div class="tags"><span class="tag">LangChain</span><span class="tag">OpenAI</span><span class="tag">FastAPI</span><span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">pgvector</span><span class="tag">Transformers</span><span class="tag">XGBoost</span><span class="tag">MLflow</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="projects">
+      <a class="project" href="https://github.com/sidsays182-maker/news-intel-rag" target="_blank" rel="noopener">
+        <div class="project-top"><h3><span class="folder">📁</span> news-intel-rag</h3><span class="ext-arrow">↗</span></div>
+        <p>Retrieval-augmented chatbot answering questions over a live news corpus. Ingests articles continuously and serves grounded answers with citations.</p>
+        <div class="tags"><span class="tag">FastAPI</span><span class="tag">pgvector</span><span class="tag">LangChain</span><span class="tag">Python</span></div>
+      </a>
+      <a class="project" href="https://github.com/sidsays182-maker/pulse-sentiment-dashboard" target="_blank" rel="noopener">
+        <div class="project-top"><h3><span class="folder">📁</span> pulse-sentiment-dashboard</h3><span class="ext-arrow">↗</span></div>
+        <p>Real-time sentiment analytics over streaming social and news data, with a live dashboard for tracking public mood on any topic.</p>
+        <div class="tags"><span class="tag">FastAPI</span><span class="tag">Transformers</span><span class="tag">Next.js</span><span class="tag">Python</span></div>
+      </a>
+      <a class="project" href="https://github.com/sidsays182-maker/legis-forecast" target="_blank" rel="noopener">
+        <div class="project-top"><h3><span class="folder">📁</span> legis-forecast</h3><span class="ext-arrow">↗</span></div>
+        <p>ML pipeline that predicts the probability a U.S. Congressional bill becomes law, from bill text and legislative metadata.</p>
+        <div class="tags"><span class="tag">XGBoost</span><span class="tag">sentence-transformers</span><span class="tag">MLflow</span><span class="tag">Python</span></div>
+      </a>
+      <a class="project" href="https://github.com/sidsays182-maker" target="_blank" rel="noopener">
+        <div class="project-top"><h3><span class="folder">🚧</span> floor</h3><span class="ext-arrow">↗</span></div>
+        <p>News curation and commentary platform with AI voice — turning the daily firehose into curated, narrated briefings. In active development.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">OpenAI</span><span class="tag">Node.js</span><span class="tag">Vercel</span></div>
+      </a>
+      <a class="project" href="https://github.com/sidsays182-maker" target="_blank" rel="noopener">
+        <div class="project-top"><h3><span class="folder">🚧</span> legislation-tracker</h3><span class="ext-arrow">↗</span></div>
+        <p>Policy monitoring platform tracking U.S. federal and state bills, with alerts and summaries for the issues you follow. In active development.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">LangChain</span></div>
+      </a>
+      <a class="project" href="https://github.com/sidsays182-maker" target="_blank" rel="noopener">
+        <div class="project-top"><h3><span class="folder">🚧</span> hate-crime-tracker</h3><span class="ext-arrow">↗</span></div>
+        <p>Data-driven advocacy platform tracking hate-crime incidents across the U.S. — open data for all Americans. In active development.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="job">
+        <div class="job-head"><h3>Senior AI Data Engineer (Contract)</h3><span class="co">@ PJM Interconnection</span><span class="dates">Oct 2023 – Present</span></div>
+        <ul>
+          <li>Architected ELT/ETL pipelines with ADF and Databricks (PySpark, Delta Lake), processing 10M+ energy market records daily using Medallion Architecture.</li>
+          <li>Optimized Snowflake models and Spark clusters for a 40% query performance improvement and lower compute costs.</li>
+          <li>Built automated data validation frameworks (null checks, schema drift, anomaly rules) and CI/CD pipelines in Azure DevOps.</li>
+          <li>Achieved 99.5% pipeline uptime via Azure Monitor, automated alerting, and systematic root-cause analysis.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-head"><h3>Data Engineer</h3><span class="co">@ zavvie</span><span class="dates">Jun 2021 – May 2023</span></div>
+        <ul>
+          <li>Built end-to-end ETL/ELT pipelines (ADF, Databricks, Snowflake) serving real estate market data to analytics and product teams.</li>
+          <li>Automated data quality and reconciliation workflows, cutting data defects by 35%.</li>
+          <li>Reduced pipeline runtimes 35% through Spark tuning and Snowflake warehouse sizing; delivered curated datasets for iBuyer analysis and executive dashboards.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-head"><h3>Data Engineer</h3><span class="co">@ T. Rowe Price</span><span class="dates">May 2020 – Jun 2021</span></div>
+        <ul>
+          <li>Supported enterprise ETL workflows loading financial datasets into the Azure lakehouse with ADF and Databricks.</li>
+          <li>Built Silver/Gold reporting datasets and validation checks for investment reporting and portfolio analytics; supported Power BI workflows.</li>
+          <li>Managed metadata and lineage documentation for regulatory compliance and audit readiness.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-head"><h3>Junior Analytics Engineer</h3><span class="co">@ Sysvine Technologies</span><span class="dates">Jan 2017 – Apr 2019</span></div>
+        <ul>
+          <li>Developed SQL-based extraction, transformation, and reporting workflows with data validation and reconciliation across source systems.</li>
+          <li>Built reusable SQL templates and transformation patterns, improving turnaround on reporting requests.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <h2>Education</h2>
+    <div class="edu-grid">
+      <div class="edu"><h3>M.S. in Information Systems</h3><p>University of Colorado</p></div>
+      <div class="edu"><h3>B.Tech in Information Technology</h3><p>Hindustan University</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container contact">
+    <h2>Get In Touch</h2>
+    <p>Whether it's a data platform role, a civic-tech collaboration, or an AI product idea — my inbox is open.</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:sundaramr1809@gmail.com">sundaramr1809@gmail.com</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/sundaramram" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/sidsays182-maker" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">built by <a href="https://github.com/sidsays182-maker">Sundaram Ramachandran</a> · © 2026</div>
+</footer>
+
+</body>
+</html>
