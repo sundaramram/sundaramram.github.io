@@ -115,6 +115,21 @@
   .folder { color: var(--accent2); }
   .ext-arrow { color: var(--muted); font-size: .85rem; }
 
+  /* Research */
+  .section-note { color: var(--muted); font-family: var(--mono); font-size: .85rem; margin: -26px 0 34px; }
+  .research-list { display: grid; gap: 16px; }
+  .research-item {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .research-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .research-item h3 { font-family: var(--mono); font-size: .98rem; color: var(--accent); font-weight: 500; }
+  .research-item p { color: var(--muted); font-size: .93rem; }
+  .status {
+    font-family: var(--mono); font-size: .72rem; padding: 4px 10px; border-radius: 999px;
+    background: rgba(52,211,153,.08); border: 1px solid rgba(52,211,153,.25); color: var(--accent2); white-space: nowrap;
+  }
+
   /* Experience */
   .timeline { position: relative; padding-left: 28px; }
   .timeline::before { content: ''; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
@@ -162,7 +177,9 @@
       <a href="#about">about</a>
       <a href="#skills">skills</a>
       <a href="#projects">projects</a>
+      <a href="#research">research</a>
       <a href="#experience">experience</a>
+      <a href="https://sundaramram.github.io/investing/">investing</a>
       <a href="#contact">contact</a>
     </div>
   </div>
@@ -186,6 +203,7 @@
         <div><span class="k">stack:</span> <span class="v">Azure · Databricks · PySpark · Delta Lake · Snowflake · SQL</span></div>
         <div><span class="k">location:</span> <span class="v">Norristown, PA</span></div>
         <div><span class="k">building:</span> <span class="v">civic tech · news intelligence · ML</span></div>
+        <div><span class="k">angel:</span> <span class="v">pre-seed · data infra · AI-native products</span></div>
       </div>
     </div>
   </div>
@@ -268,6 +286,46 @@
         <p>Data-driven advocacy platform tracking hate-crime incidents across the U.S. — open data for all Americans. In active development.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span></div>
       </a>
+      <a class="project" href="https://github.com/sundaramram" target="_blank" rel="noopener">
+        <div class="project-top"><h3><span class="folder">🚧</span> pipeline-copilot</h3><span class="ext-arrow">↗</span></div>
+        <p>LLM agent for lakehouse operations: reads Spark logs, root-causes failed jobs and schema drift, and drafts the fix as a pull request. In active development.</p>
+        <div class="tags"><span class="tag">LLM Agents</span><span class="tag">PySpark</span><span class="tag">Delta Lake</span><span class="tag">OpenAI</span></div>
+      </a>
+      <a class="project" href="https://github.com/sundaramram" target="_blank" rel="noopener">
+        <div class="project-top"><h3><span class="folder">🚧</span> rag-evals</h3><span class="ext-arrow">↗</span></div>
+        <p>Evaluation harness for news RAG systems: scores faithfulness, citation accuracy, and freshness drift — so retrieval quality is measured, not guessed. In active development.</p>
+        <div class="tags"><span class="tag">RAG</span><span class="tag">Evals</span><span class="tag">LangChain</span><span class="tag">pytest</span></div>
+      </a>
+      <a class="project" href="https://github.com/sundaramram" target="_blank" rel="noopener">
+        <div class="project-top"><h3><span class="folder">🚧</span> civic-slm</h3><span class="ext-arrow">↗</span></div>
+        <p>Fine-tuning small open models with LoRA on legislative and civic text — cheap, private classification and summarization for civic-tech tools. In active development.</p>
+        <div class="tags"><span class="tag">Fine-tuning</span><span class="tag">LoRA</span><span class="tag">Hugging Face</span><span class="tag">SLM</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="container">
+    <h2>Research</h2>
+    <p class="section-note">$ independent research — active explorations, write-ups published here as they're ready</p>
+    <div class="research-list">
+      <div class="research-item">
+        <div class="research-head"><h3>Grounded generation over live news</h3><span class="status">write-up in progress</span></div>
+        <p>How RAG systems stay faithful when the corpus changes hourly: freshness-aware retrieval, provenance tracking, and citation integrity under drift. Builds on news-intel-rag.</p>
+      </div>
+      <div class="research-item">
+        <div class="research-head"><h3>Agentic data engineering</h3><span class="status">active experiments</span></div>
+        <p>How far can LLM agents safely operate production lakehouse pipelines? Failure taxonomies, guardrails, and human-in-the-loop patterns for schema drift and job triage.</p>
+      </div>
+      <div class="research-item">
+        <div class="research-head"><h3>Small models for civic NLP</h3><span class="status">exploring</span></div>
+        <p>Testing whether fine-tuned small language models can match frontier APIs on legislative classification and summarization — at a fraction of the cost, and fully private.</p>
+      </div>
+      <div class="research-item">
+        <div class="research-head"><h3>Hybrid forecasting of legislative outcomes</h3><span class="status">ongoing</span></div>
+        <p>Combining gradient-boosted models with LLM-extracted bill features to push past the text + metadata baseline set in legis-forecast.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -315,7 +373,7 @@
 <section id="contact">
   <div class="container contact">
     <h2>Get In Touch</h2>
-    <p>Whether it's a data platform role, a civic-tech collaboration, or an AI product idea — my inbox is open.</p>
+    <p>Whether it's a data platform role, a civic-tech collaboration, or an AI product idea — my inbox is open. Founder raising a pre-seed round? See my <a href="https://sundaramram.github.io/investing/" style="color:var(--accent)">open investor page</a>.</p>
     <div class="contact-links">
       <a class="btn btn-primary" href="mailto:sundaramr1809@gmail.com">sundaramr1809@gmail.com</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/sundaramram" target="_blank" rel="noopener">LinkedIn ↗</a>
